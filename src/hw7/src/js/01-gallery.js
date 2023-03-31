@@ -37,23 +37,27 @@ function listHandler(e) {
   const descripUrl = e.target.dataset.source; // присвоєння властивості по дата обєкту
   console.log(descripUrl);
 
-  // Модуль відкривання і створення модалього вікна
+  // Модуль створення модалього вікна
   instance = basicLightbox.create(`
-     <img src=${descripUrl} > `);
+     <img src=${descripUrl}  > `);
 
   instance.show();
   console.log(instance);
+  // відслідковування клавіатури
+  document.addEventListener('keydown', escHandler);
 }
 // функція закривання
 function closeModal() {
   instance.close();
+  // Закінчення відслідковування клавіатури
+  document.removeEventListener('keydown', escHandler);
 }
-// визов функції події на натиск
-galleryEr.addEventListener('click', listHandler);
 
-// визов функції закриття з івентом esc
-document.addEventListener('keydown', (event) => {
-  if (event.code === 'Escape') {
+function escHandler(e) {
+  if (e.code === 'Escape') {
     closeModal();
   }
-});
+}
+
+// визов функції події на натиск
+galleryEr.addEventListener('click', listHandler);
