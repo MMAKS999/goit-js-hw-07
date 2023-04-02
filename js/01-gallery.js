@@ -33,7 +33,7 @@ let instance = null; // локальна зміна для збільшення 
 // функція Слухач події
 function listHandler(e) {
   console.log(e.target);
-  // перевірка натиску на картинку
+  // перевірка натиску на картинку (обробник події e.target.tagName повертає імя з великої літери!!!!!!!!)
   if (e.target.tagName === 'IMG') {
     const descripUrl = e.target.dataset.source; // присвоєння властивості по дата обєкту
     console.log(descripUrl);
