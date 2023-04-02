@@ -33,17 +33,20 @@ let instance = null; // локальна зміна для збільшення 
 // функція Слухач події
 function listHandler(e) {
   console.log(e.target);
-  const descripUrl = e.target.dataset.source; // присвоєння властивості по дата обєкту
-  console.log(descripUrl);
+  // перевірка натиску на картинку
+  if (e.target.tagName === 'IMG') {
+    const descripUrl = e.target.dataset.source; // присвоєння властивості по дата обєкту
+    console.log(descripUrl);
 
-  // Модуль створення модалього вікна
-  instance = basicLightbox.create(`
+    // Модуль створення модалього вікна
+    instance = basicLightbox.create(`
      <img src=${descripUrl}  > `);
 
-  instance.show();
-  console.log(instance);
-  // відслідковування клавіатури
-  document.addEventListener('keydown', escHandler);
+    instance.show();
+    console.log(instance);
+    // відслідковування клавіатури
+    document.addEventListener('keydown', escHandler);
+  }
 }
 // функція закривання
 function closeModal() {
